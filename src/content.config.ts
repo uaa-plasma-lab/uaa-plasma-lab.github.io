@@ -9,14 +9,14 @@ const yyyyMm = z.string().regex(/^\d{4}-\d{2}$/, 'Use YYYY-MM');
 
 const members = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/members' }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     name: z.string(),
     role: z.enum(['PI', 'postdoc', 'PhD student', 'MS student', 'undergrad', 'staff']),
     status: z.enum(['active', 'former', 'alumni']),
     joined: yyyyMm.optional(),
     left: yyyyMm.optional(),
     research_thread: researchThreadField.optional(),
-    photo: z.string().optional(),
+    photo: image().optional(),
     email: z.string().email().optional(),
     website: z.string().url().optional(),
     orcid: z.string().optional(),

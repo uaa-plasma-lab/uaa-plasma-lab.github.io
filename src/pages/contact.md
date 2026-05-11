@@ -6,7 +6,7 @@ description: How to reach the UAA Plasma Lab.
 
 # Contact
 
-**Principal Investigator:** Nathaniel K. Hicks
+**Principal Investigator:** Dr. Nathaniel Hicks
 **Email:** [nkhicks@alaska.edu](mailto:nkhicks@alaska.edu)
 
 **Address:**

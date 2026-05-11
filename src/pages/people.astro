@@ -1,5 +1,6 @@
 ---
-import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 
 const members = await getCollection('members');
@@ -19,24 +20,47 @@ active.sort((a, b) => {
   if (r !== 0) return r;
   return a.data.name.localeCompare(b.data.name);
 });
+
+const rendered = await Promise.all(
+  active.map(async m => {
+    const { Content } = await render(m);
+    return { member: m, Content };
+  })
+);
 ---
-<Base title="People" description="Current members of the UAA Plasma Lab.">
+<Base title="People" description="Members of the UAA Plasma Lab.">
   <h1>People</h1>
 
-  {active.length === 0 && <p>No active members listed yet.</p>}
+  {rendered.length === 0 && <p>No active members listed yet.</p>}
 
   <ul class="members">
-    {active.map(m => (
-      <li class="member">
-        <h2>{m.data.name}</h2>
-        <p class="role">{m.data.role}</p>
-        {(m.data.email || m.data.website) && (
-          <p class="links">
-            {m.data.website && <a href={m.data.website}>Website</a>}
-            {m.data.website && m.data.email && <span aria-hidden="true"> · </span>}
-            {m.data.email && <a href={`mailto:${m.data.email}`}>{m.data.email}</a>}
-          </p>
-        )}
+    {rendered.map(({ member: m, Content }) => (
+      <li class="member" id={m.id}>
+        <div class="card">
+          {m.data.photo && (
+            <Image
+              class="photo"
+              src={m.data.photo}
+              alt={`Portrait of ${m.data.name}`}
+              width={220}
+              height={220}
+            />
+          )}
+          <div class="body">
+            <h2>{m.data.name}</h2>
+            <p class="role">{m.data.role}</p>
+            {(m.data.email || m.data.website) && (
+              <p class="links">
+                {m.data.website && <a href={m.data.website}>Website</a>}
+                {m.data.website && m.data.email && <span aria-hidden="true"> · </span>}
+                {m.data.email && <a href={`mailto:${m.data.email}`}>{m.data.email}</a>}
+              </p>
+            )}
+            <div class="bio">
+              <Content />
+            </div>
+          </div>
+        </div>
       </li>
     ))}
   </ul>
@@ -49,15 +73,58 @@ active.sort((a, b) => {
   max-width: none;
 }
 .member {
-  padding: 1rem 0;
+  padding: 2rem 0;
   border-bottom: 1px solid var(--color-border);
 }
 .member:last-child { border-bottom: none; }
-.member h2 { margin: 0 0 0.25rem; font-size: 1.2rem; }
+.member:first-child { padding-top: 0.5rem; }
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+@media (min-width: 40rem) {
+  .card {
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+  }
+}
+
+.photo {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+}
+
+.body h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.4rem;
+}
 .role {
   color: var(--color-text-muted);
   font-size: 0.95rem;
   margin: 0 0 0.5rem;
 }
-.links { margin: 0.25rem 0 0; font-size: 0.95rem; }
+.links {
+  margin: 0.25rem 0 1rem;
+  font-size: 0.95rem;
+}
+.bio :global(h2) {
+  font-size: 1.1rem;
+  margin-top: 1.25em;
+  margin-bottom: 0.4em;
+}
+.bio :global(p) {
+  margin: 0.6em 0;
+}
+.bio :global(ul) {
+  padding-left: 1.25em;
+}
+.bio :global(li) {
+  margin: 0.2em 0;
+}
 </style>
