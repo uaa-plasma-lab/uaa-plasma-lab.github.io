@@ -5,13 +5,22 @@ const RESEARCH_THREADS = ['MPT', 'Hall thruster', 'Diagnostics course'] as const
 const researchThread = z.enum(RESEARCH_THREADS);
 const researchThreadField = z.union([researchThread, z.array(researchThread)]);
 
+const ROLES = [
+  'Principal Investigator',
+  'Lab Director',
+  'Graduate Student Researcher',
+  'Undergraduate Student Researcher',
+] as const;
+const role = z.enum(ROLES);
+const roleField = z.union([role, z.array(role).nonempty()]);
+
 const yyyyMm = z.string().regex(/^\d{4}-\d{2}$/, 'Use YYYY-MM');
 
 const members = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/members' }),
   schema: ({ image }) => z.object({
     name: z.string(),
-    role: z.enum(['PI', 'postdoc', 'PhD student', 'MS student', 'undergrad', 'staff']),
+    role: roleField,
     status: z.enum(['active', 'former', 'alumni']),
     joined: yyyyMm.optional(),
     left: yyyyMm.optional(),

@@ -111,7 +111,11 @@ Create `src/content/members/<lastname>-<firstname>.md`. Example,
 ```yaml
 ---
 name: Alice Example
-role: PhD student              # PI | postdoc | PhD student | MS student | undergrad | staff
+role: Undergraduate Student Researcher    # Principal Investigator | Lab Director | Graduate Student Researcher | Undergraduate Student Researcher
+                               # multi-role: use a YAML list (e.g., PI + Lab Director)
+                               #   role:
+                               #     - Principal Investigator
+                               #     - Lab Director
 status: active                 # active | former | alumni
 joined: 2024-08                # YYYY-MM; optional but encouraged
 left:                          # YYYY-MM, set when status changes from active

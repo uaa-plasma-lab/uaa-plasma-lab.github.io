@@ -1,6 +1,8 @@
 ---
 name: Dr. Nathaniel Hicks
-role: PI
+role:
+  - Principal Investigator
+  - Lab Director
 status: active
 research_thread:
   - MPT
@@ -27,9 +29,11 @@ applicability in various topics of science and engineering. Nuclear
 fusion, in particular, has the potential to provide clean, sustainable
 energy for all of humanity.
 
-I am studying the conceptual basis for a new type of quasi-neutral
+"I am studying the conceptual basis for a new type of quasi-neutral
 plasma confinement — the [Multipole Plasma Trap](/research/mpt/). I'm
 performing particle-in-cell computer simulations to explore it, and I'm
-designing experiments to test the hypothesis and modeling results.
+designing experiments to test the hypothesis and modeling results."
 
-Originally from Cheney, WA. Based in Anchorage, AK.
+Hometown:  Anchorage, AK
+
+Originally from:  Cheney, WA
