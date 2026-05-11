@@ -1,0 +1,19 @@
+{
+  "name": "uaa-plasma-lab-website",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Public website for the UAA Plasma Lab",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^6.3.1"
+  }
+}

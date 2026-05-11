@@ -1,0 +1,63 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const members = await getCollection('members');
+const active = members.filter(m => m.data.status === 'active');
+
+const ROLE_ORDER: Record<string, number> = {
+  PI: 0,
+  postdoc: 1,
+  'PhD student': 2,
+  'MS student': 3,
+  undergrad: 4,
+  staff: 5,
+};
+
+active.sort((a, b) => {
+  const r = (ROLE_ORDER[a.data.role] ?? 99) - (ROLE_ORDER[b.data.role] ?? 99);
+  if (r !== 0) return r;
+  return a.data.name.localeCompare(b.data.name);
+});
+---
+<Base title="People" description="Current members of the UAA Plasma Lab.">
+  <h1>People</h1>
+
+  {active.length === 0 && <p>No active members listed yet.</p>}
+
+  <ul class="members">
+    {active.map(m => (
+      <li class="member">
+        <h2>{m.data.name}</h2>
+        <p class="role">{m.data.role}</p>
+        {(m.data.email || m.data.website) && (
+          <p class="links">
+            {m.data.website && <a href={m.data.website}>Website</a>}
+            {m.data.website && m.data.email && <span aria-hidden="true"> · </span>}
+            {m.data.email && <a href={`mailto:${m.data.email}`}>{m.data.email}</a>}
+          </p>
+        )}
+      </li>
+    ))}
+  </ul>
+</Base>
+
+<style>
+.members {
+  list-style: none;
+  padding: 0;
+  max-width: none;
+}
+.member {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.member:last-child { border-bottom: none; }
+.member h2 { margin: 0 0 0.25rem; font-size: 1.2rem; }
+.role {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin: 0 0 0.5rem;
+}
+.links { margin: 0.25rem 0 0; font-size: 0.95rem; }
+</style>

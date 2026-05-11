@@ -1,0 +1,32 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>
+      UAA Plasma Lab · University of Alaska Anchorage<br />
+      Principal Investigator: <a href="mailto:nkhicks@alaska.edu">Nathaniel K. Hicks</a>
+    </p>
+    <p class="copyright">© {year} UAA Plasma Lab.</p>
+  </div>
+</footer>
+
+<style>
+.site-footer {
+  margin-top: 4rem;
+  border-top: 1px solid var(--color-border);
+  background: white;
+}
+.footer-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 1.5rem var(--pad);
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+.footer-inner p { margin: 0 0 0.5rem; max-width: none; }
+.copyright { color: #888; font-size: 0.875rem; }
+@media (min-width: 48rem) {
+  .footer-inner { padding: 1.5rem var(--pad-lg); }
+}
+</style>

@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="UAA Plasma Lab" description="Plasma physics research at the University of Alaska Anchorage — RF multipole confinement, Hall thruster diagnostics, and a plasma diagnostics laboratory course.">
+  <section class="hero">
+    <h1>UAA Plasma Lab</h1>
+    <p class="lede">
+      Plasma physics research at the University of Alaska Anchorage:
+      RF electric confinement of quasi-neutral plasmas, diagnostics for
+      electric propulsion, and a hands-on plasma diagnostics course
+      for undergraduates.
+    </p>
+  </section>
+
+  <section class="threads">
+    <h2>Research</h2>
+    <div class="grid">
+      <a href="/research/mpt/" class="card">
+        <h3>Multipole Plasma Trap</h3>
+        <p>RF electric multipole confinement of quasi-neutral plasmas.</p>
+      </a>
+      <a href="/research/hall-thruster/" class="card">
+        <h3>Hall thruster emulation</h3>
+        <p>RF plasma diagnostic development for electric propulsion (NASA / JPL).</p>
+      </a>
+      <a href="/research/course/" class="card">
+        <h3>Diagnostics laboratory course</h3>
+        <p>Undergraduate teaching in plasma diagnostics.</p>
+      </a>
+    </div>
+  </section>
+</Base>
+
+<style>
+.hero { padding-top: 1rem; }
+.lede {
+  font-size: 1.15rem;
+  color: var(--color-text);
+  margin-bottom: 2.5rem;
+  max-width: var(--measure);
+}
+.threads h2 { margin-top: 2rem; }
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+@media (min-width: 48rem) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+.card {
+  display: block;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: white;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.card:hover, .card:focus-visible {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+.card h3 {
+  margin-top: 0;
+  color: var(--color-accent-dark);
+}
+.card p {
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+  max-width: none;
+}
+</style>
