@@ -7,16 +7,22 @@ const members = await getCollection('members');
 const active = members.filter(m => m.data.status === 'active');
 
 const ROLE_ORDER: Record<string, number> = {
-  PI: 0,
-  postdoc: 1,
-  'PhD student': 2,
-  'MS student': 3,
-  undergrad: 4,
-  staff: 5,
+  'Principal Investigator': 0,
+  'Lab Director': 1,
+  'Graduate Student Researcher': 2,
+  'Undergraduate Student Researcher': 3,
 };
 
+const rolePriority = (role: string | string[]): number => {
+  const list = Array.isArray(role) ? role : [role];
+  return Math.min(...list.map(r => ROLE_ORDER[r] ?? 99));
+};
+
+const roleDisplay = (role: string | string[]): string =>
+  Array.isArray(role) ? role.join(' · ') : role;
+
 active.sort((a, b) => {
-  const r = (ROLE_ORDER[a.data.role] ?? 99) - (ROLE_ORDER[b.data.role] ?? 99);
+  const r = rolePriority(a.data.role) - rolePriority(b.data.role);
   if (r !== 0) return r;
   return a.data.name.localeCompare(b.data.name);
 });
@@ -48,7 +54,7 @@ const rendered = await Promise.all(
           )}
           <div class="body">
             <h2>{m.data.name}</h2>
-            <p class="role">{m.data.role}</p>
+            <p class="role">{roleDisplay(m.data.role)}</p>
             {(m.data.email || m.data.website) && (
               <p class="links">
                 {m.data.website && <a href={m.data.website}>Website</a>}
