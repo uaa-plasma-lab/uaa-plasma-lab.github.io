@@ -120,7 +120,7 @@ research_thread: MPT           # MPT | Hall thruster | Diagnostics course
                                #   research_thread:
                                #     - MPT
                                #     - Hall thruster
-photo: alice.jpg               # optional; relative to src/assets/members/
+photo: ./alice-example.jpg     # optional; co-located JPG/PNG in src/content/members/, referenced relative to the .md (Astro Image optimization applies)
 email:                         # optional; only if member opts in for public
 website:                       # optional external link
 orcid:                         # optional
