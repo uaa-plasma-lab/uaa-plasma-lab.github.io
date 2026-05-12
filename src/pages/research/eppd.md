@@ -1,10 +1,10 @@
 ---
 layout: ../../layouts/Base.astro
-title: Hall thruster emulation
+title: Electric Propulsion Plasma Diagnostics
 description: RF plasma diagnostic development for electric propulsion, in collaboration with NASA and JPL.
 ---
 
-# Hall thruster emulation
+# Electric Propulsion Plasma Diagnostics (EPPD)
 
 RF plasma diagnostic development for electric propulsion, in
 collaboration with NASA and the Jet Propulsion Laboratory.

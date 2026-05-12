@@ -1,13 +1,13 @@
 ---
 layout: ../../layouts/Base.astro
 title: Research
-description: Three research threads of the UAA Plasma Lab — Multipole Plasma Trap, Hall thruster emulation, and the plasma diagnostics course.
+description: Three lab topics of the UAA Plasma Lab — electric propulsion plasma diagnostics, multipole multicusp plasma confinement, and plasma teaching and outreach.
 ---
 
 # Research
 
-The UAA Plasma Lab works on three connected threads:
+The UAA Plasma Lab team is currently working on these topics:
 
-- **[Multipole Plasma Trap (MPT)](/research/mpt/)** — RF electric multipole confinement of quasi-neutral plasmas.
-- **[Hall thruster emulation](/research/hall-thruster/)** — RF plasma diagnostic development for electric propulsion (NASA / JPL).
-- **[Plasma diagnostics laboratory course](/research/course/)** — undergraduate teaching in plasma diagnostics.
+- **[Electric Propulsion Plasma Diagnostics (EPPD)](/research/eppd/)** — RF plasma diagnostic development for electric propulsion (NASA / JPL).
+- **[Multipole Multicusp Plasma Trap (MMPT)](/research/mmpt/)** — RF multipole multicusp confinement of quasi-neutral plasmas.
+- **[Plasma Teaching and Outreach (PTO)](/research/pto/)** — undergraduate plasma physics education and community outreach.

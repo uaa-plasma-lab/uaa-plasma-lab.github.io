@@ -1,7 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-const RESEARCH_THREADS = ['MPT', 'Hall thruster', 'Diagnostics course'] as const;
+const RESEARCH_THREADS = ['EPPD', 'MMPT', 'PTO'] as const;
 const researchThread = z.enum(RESEARCH_THREADS);
 const researchThreadField = z.union([researchThread, z.array(researchThread)]);
 
@@ -22,6 +22,7 @@ const members = defineCollection({
     name: z.string(),
     role: roleField,
     status: z.enum(['active', 'former', 'alumni']),
+    affiliation: z.string().optional(),
     joined: yyyyMm.optional(),
     left: yyyyMm.optional(),
     research_thread: researchThreadField.optional(),
