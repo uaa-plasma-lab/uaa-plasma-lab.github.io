@@ -5,9 +5,9 @@ role:
   - Lab Director
 status: active
 research_thread:
-  - MPT
-  - Hall thruster
-  - Diagnostics course
+  - EPPD
+  - MMPT
+  - PTO
 email: nkhicks@alaska.edu
 photo: ./hicks-nathaniel.jpg
 ---
@@ -30,7 +30,7 @@ fusion, in particular, has the potential to provide clean, sustainable
 energy for all of humanity.
 
 "I am studying the conceptual basis for a new type of quasi-neutral
-plasma confinement — the [Multipole Plasma Trap](/research/mpt/). I'm
+plasma confinement — the [Multipole Multicusp Plasma Trap](/research/mmpt/). I'm
 performing particle-in-cell computer simulations to explore it, and I'm
 designing experiments to test the hypothesis and modeling results."
 

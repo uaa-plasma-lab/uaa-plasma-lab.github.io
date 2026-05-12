@@ -33,14 +33,14 @@ Two audiences:
   resources. The internal section is access-controlled — public visitors
   cannot reach it.
 
-Three research threads (mirror the lab repo's CLAUDE.md §1, kept in
-sync):
+Three lab topics (mirror the lab repo's CLAUDE.md §1, kept in sync):
 
-- **Multipole Plasma Trap (MPT)** — RF electric multipole confinement of
-  quasi-neutral plasmas.
-- **Hall thruster emulation** — RF plasma diagnostic development for
-  electric propulsion (NASA/JPL).
-- **Plasma diagnostics laboratory course** — undergraduate teaching.
+- **Electric Propulsion Plasma Diagnostics (EPPD)** — RF plasma
+  diagnostic development for electric propulsion (NASA/JPL).
+- **Multipole Multicusp Plasma Trap (MMPT)** — RF multipole-multicusp
+  confinement of quasi-neutral plasmas.
+- **Plasma Teaching and Outreach (PTO)** — undergraduate plasma-physics
+  education and community outreach.
 
 Companion repos (per DECISIONS.md in `uaa-plasma-lab`):
 - `uaa-plasma-lab` — lab software (MATLAB GUI, drivers, modules).
@@ -117,13 +117,14 @@ role: Undergraduate Student Researcher    # Principal Investigator | Lab Directo
                                #     - Principal Investigator
                                #     - Lab Director
 status: active                 # active | former | alumni
+affiliation: Mechanical Engineering   # optional; major or departmental affiliation
 joined: 2024-08                # YYYY-MM; optional but encouraged
 left:                          # YYYY-MM, set when status changes from active
-research_thread: MPT           # MPT | Hall thruster | Diagnostics course
+research_thread: EPPD          # EPPD | MMPT | PTO
                                # multi-thread: use a YAML list
                                #   research_thread:
-                               #     - MPT
-                               #     - Hall thruster
+                               #     - EPPD
+                               #     - MMPT
 photo: ./alice-example.jpg     # optional; co-located JPG/PNG in src/content/members/, referenced relative to the .md (Astro Image optimization applies)
 email:                         # optional; only if member opts in for public
 website:                       # optional external link
@@ -170,7 +171,7 @@ venue: "Phys. Plasmas"         # journal or conference name
 doi:                           # optional, no http prefix; e.g. 10.1063/...
 arxiv:                         # optional, e.g. 2511.01234
 links:                         # optional; array of {label, url}
-research_thread: MPT           # optional tag
+research_thread: EPPD          # optional tag (EPPD | MMPT | PTO)
 ---
 
 Optional 1-2 sentence abstract / context here.
@@ -185,8 +186,8 @@ Contact) live under `src/pages/` directly. The home and people pages
 are `.astro` files (the home page is hand-designed; the people page
 queries the members collection). Research-thread pages and Contact are
 plain Markdown with a `layout:` frontmatter pointing at
-`src/layouts/Base.astro` — see `src/pages/research/mpt.md` for an
-example. To add a fourth research thread, add a new `.md` under
+`src/layouts/Base.astro` — see `src/pages/research/mmpt.md` for an
+example. To add a fourth lab topic, add a new `.md` under
 `src/pages/research/`, then update `src/components/Nav.astro` (if it
 should appear in the nav), the home page card grid in
 `src/pages/index.astro`, and `src/pages/research/index.md`.
